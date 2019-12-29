@@ -1,2 +1,2 @@
 # Algorithims
-Basic algorithims implementation and dcoumentation.
+Basic algorithims implementation and documentation.
