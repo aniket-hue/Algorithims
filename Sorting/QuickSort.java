@@ -1,6 +1,6 @@
 package Sorting;
 /**
- * This implementation is not the best one, but it is to easy to understand for first time reader.
+ * This implementation is not the best one, but it is easy to understand for first time reader.
  * This code is accepted on an online judge.
  * It is recommended that you go through the theory before reading this code.
  * QuickSort is divide and conquer algorithm.
