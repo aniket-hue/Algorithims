@@ -11,9 +11,8 @@ public class Test {
     static int[][] sol;
 
     static void f(int a[][], int x, int y, int n) {
-        if (x == n - 1 && y == n - 1)
-        {
-            c++;
+        if (x == n - 1 && y == n - 1) {
+            sol[x][y] = 1;
             for (int i = 0; i < a.length; i++) {
                 for (int j = 0; j < a.length; j++)
                     System.out.print(sol[i][j] + " ");
@@ -31,7 +30,6 @@ public class Test {
             f(a, x, y + 1, n);
             f(a, x - 1, y, n);
             f(a, x, y - 1, n);
-
             sol[x][y] = 0;
         }
 
@@ -48,7 +46,7 @@ public class Test {
         }
 
         f(a, 0, 0, n);
-        System.out.println(c);
+        // System.out.println(c);
     }
 
     void run() {
