@@ -1,3 +1,5 @@
+package Lists;
+
 class node {
     int data;
     node next;
@@ -8,8 +10,7 @@ class node {
     }
 }
 
-
-class Linkedlist {
+public class LinkedList {
     node head = null;
 
     void insert_first(int data) {
@@ -70,22 +71,3 @@ class Linkedlist {
     }
 }
 
-class Test {
-    public static void main(String[] args) {
-        Linkedlist ob = new Linkedlist();
-        ob.insert_first(1);
-        ob.insert_first(2);
-        ob.insert_first(3);
-        ob.insert_first(4);
-        ob.insert_last(6);
-        ob.insert_last(7);
-        ob.insert_last(8);
-        ob.insert_last(9);
-        ob.insert_mid(10);
-        ob.insert_mid(11);
-        ob.delete_position(1);
-        ob.delete_position(4);
-
-        ob.display();
-    }
-}
