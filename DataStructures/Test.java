@@ -2,7 +2,6 @@ import Lists.*;
 
 class Test {
     public static void main(String[] args) {
-
         DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
         list.addFirst(1);
         list.addFirst(2);
