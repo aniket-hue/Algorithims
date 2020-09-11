@@ -2,12 +2,13 @@ import Lists.*;
 
 class Test {
     public static void main(String[] args) {
-        
-        DoubleLinkedList<String> list = new DoubleLinkedList<>();
-        list.addFirst("Abc");
-        list.addLast("as");
-        list.addFirst("ds");
-        list.addFirst("ewr");
-        list.print();
+
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<>();
+        list.addFirst(1);
+        list.addFirst(2);
+        list.addFirst(3);
+        // System.out.println("0--");
+        list.printReverse();
+
     }
 }

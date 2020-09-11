@@ -1,41 +1,14 @@
 package Lists;
 
-class Node<T> {
-    private T value;
-    private Node<T> next = null;
-    private Node<T> prev = null;
-
-    public Node(T value) {
-        this.value = value;
-    }
-
-    public void setNext(Node<T> next) {
-        this.next = next;
-    }
-
-    public void setPrev(Node<T> prev) {
-        this.prev = prev;
-    }
-
-    public Node<T> getPrev() {
-        return this.prev;
-    }
-
-    public Node<T> getNext() {
-        return this.next;
-    }
-
-    public T getValue() {
-        return this.value;
-    }
-
-}
-
 public class DoubleLinkedList<T> {
-    private Node<T> head = null;
+    private DoubleLinkedListNode<T> head = null;
 
-    public Node<T> createNode(T data) {
-        return new Node<T>(data);
+    public DoubleLinkedListNode<T> createDoubleLinkedListNode(T data) {
+        return new DoubleLinkedListNode<T>(data);
+    }
+
+    public DoubleLinkedListNode<T> head() {
+        return this.head;
     }
 
     /**
@@ -45,13 +18,13 @@ public class DoubleLinkedList<T> {
      */
 
     public void addFirst(T data) {
-        Node<T> newNode = createNode(data);
+        DoubleLinkedListNode<T> newDoubleLinkedListNode = createDoubleLinkedListNode(data);
         if (head == null)
-            head = newNode;
+            head = newDoubleLinkedListNode;
         else {
-            newNode.setNext(head);
-            head.setPrev(newNode);
-            head = newNode;
+            newDoubleLinkedListNode.setNext(head);
+            head.setPrev(newDoubleLinkedListNode);
+            head = newDoubleLinkedListNode;
         }
     }
 
@@ -62,25 +35,28 @@ public class DoubleLinkedList<T> {
      */
 
     public void addLast(T data) {
-        Node<T> newNode = createNode(data);
+        DoubleLinkedListNode<T> newDoubleLinkedListNode = createDoubleLinkedListNode(data);
         if (head == null)
-            head = newNode;
+            head = newDoubleLinkedListNode;
         else {
-            Node<T> temp = head;
+            DoubleLinkedListNode<T> temp = head;
             while (temp.getNext() != null)
                 temp = temp.getNext();
-            temp.setNext(newNode);
-            newNode.setPrev(temp);
+            temp.setNext(newDoubleLinkedListNode);
+            newDoubleLinkedListNode.setPrev(temp);
         }
     }
 
     /**
-     * Recursively traverse this list and print the node value
+     * Recursively traverse this list and print the DoubleLinkedListNode value
      * 
-     * @param node
      */
 
-    public void printList(Node<T> curr) {
+    public void print() {
+        printList(this.head);
+    }
+
+    private void printList(DoubleLinkedListNode<T> curr) {
         if (curr == null)
             return;
         else {
@@ -89,7 +65,21 @@ public class DoubleLinkedList<T> {
         }
     }
 
-    public void print() {
-        printList(head);
+    /**
+     * Recursively traverse this list and print the DoubleLinkedListNode value in
+     * reverse order
+     * 
+     */
+    public void printReverse() {
+        printList2(this.head);
+    }
+
+    private void printList2(DoubleLinkedListNode<T> curr) {
+        if (curr == null)
+            return;
+        else {
+            printList2(curr.getNext());
+            System.out.println(curr.getValue());
+        }
     }
 }
