@@ -87,6 +87,56 @@ public class LinkedList<T> {
     }
 
     /**
+     * This will delete all the duplicates in the sorted Linked List.
+     * 
+     */
+
+    public void removeDuplicates() {
+
+        SingleLinkedListNode<T> leftPointer = head, rightPointer = head.getNext();
+
+        while (leftPointer != null && rightPointer != null) {
+
+            if (leftPointer.getValue() == rightPointer.getValue()) {
+
+                while (rightPointer != null && leftPointer.getValue() == rightPointer.getValue())
+                    rightPointer = rightPointer.getNext();
+
+                leftPointer.setNext(rightPointer);
+                rightPointer.setNext(leftPointer.getNext());
+
+            } else {
+
+                leftPointer = leftPointer.getNext();
+                rightPointer = rightPointer.getNext();
+
+            }
+        }
+
+    }
+
+    /**
+     * This will detect loop in Linked List.
+     */
+    
+    public boolean detectLoop() {
+        
+        SingleLinkedListNode<T> fast = head, slow = head;
+
+        while (slow != null && fast.getNext() != null && fast.getNext().getNext() != null) {
+
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+
+            if (fast == slow)
+                return true;
+
+        }
+        
+        return false;
+    }
+
+    /**
      * Delete at specific position
      * 
      * @param position
