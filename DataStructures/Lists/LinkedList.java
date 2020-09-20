@@ -1,6 +1,7 @@
 package Lists;
 
-class SingleLinkedListNode<T> {
+
+class SingleLinkedListNode<T extends Comparable<T>> implements Comparable<SingleLinkedListNode<T>> {
     private T value;
     private SingleLinkedListNode<T> next = null;
 
@@ -20,9 +21,14 @@ class SingleLinkedListNode<T> {
         return this.value;
     }
 
+    @Override
+    public int compareTo(SingleLinkedListNode<T> arg0) {
+        return this.value.compareTo(arg0.value);
+    }
+
 }
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
     private SingleLinkedListNode<T> head = null;
 
     public SingleLinkedListNode<T> head() {
@@ -118,9 +124,9 @@ public class LinkedList<T> {
     /**
      * This will detect loop in Linked List.
      */
-    
+
     public boolean detectLoop() {
-        
+
         SingleLinkedListNode<T> fast = head, slow = head;
 
         while (slow != null && fast.getNext() != null && fast.getNext().getNext() != null) {
@@ -132,7 +138,7 @@ public class LinkedList<T> {
                 return true;
 
         }
-        
+
         return false;
     }
 
@@ -155,6 +161,28 @@ public class LinkedList<T> {
         temp.setNext(temp.getNext().getNext());
         ;
 
+    }
+
+    SingleLinkedListNode<T> nextLargerNodesHandler(SingleLinkedListNode<T> temp, SingleLinkedListNode<T> prev) {
+        if (temp.getNext() == null) {
+            System.out.print(0 + " ");
+            return temp;
+        } else {
+            SingleLinkedListNode<T> nextMax = nextLargerNodesHandler(temp.getNext(), temp);
+            if (nextMax.compareTo(temp) == 1) {
+                System.out.print(nextMax.getValue() + " ");
+                if (temp.compareTo(prev) == 1)
+                    return temp;
+                else
+                    return nextMax;
+            } else {
+                return temp;
+            }
+        }
+    }
+
+    public void nextLargerNodes() {
+        nextLargerNodesHandler(head, head);
     }
 
     /**
